@@ -1,6 +1,7 @@
 package com.comviva.party.controller;
-import com.comviva.party.model.KycDetails;
 
+
+import com.comviva.party.model.KycDetails;
 import com.comviva.party.service.KycService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.comviva.party.model.ResponseStatus;
 
-import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @EnableAutoConfiguration
@@ -22,16 +23,16 @@ public class AddController {
     ResponseStatus responseStatus;
 
     @PostMapping(value="/add" , consumes = { MediaType.APPLICATION_JSON_VALUE},
-                                 produces = { MediaType.APPLICATION_JSON_VALUE})
+            produces = { MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<ResponseStatus> addKYC(@RequestBody KycDetails details)
     {
-     service.addKycDetails(details);
-     responseStatus = new ResponseStatus("success");
-     return new ResponseEntity<ResponseStatus>(responseStatus, HttpStatus.OK);
+        service.addKycDetails(details);
+        responseStatus = new ResponseStatus("success");
+        return new ResponseEntity<ResponseStatus>(responseStatus, HttpStatus.OK);
     }
 
     @GetMapping(value="/view", produces = { MediaType.APPLICATION_JSON_VALUE})
-    public HashMap<Integer, KycDetails> viewKYC()
+    public List< KycDetails> viewKYC()
     {
         return service.getKycDetils();
     }

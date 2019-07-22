@@ -1,22 +1,21 @@
 package com.comviva.party.service;
 
+
 import com.comviva.party.model.KycDetails;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class KycService {
-    HashMap<Integer , KycDetails> map = new HashMap<Integer, KycDetails>();
-    int i=1;
+    List<KycDetails> list = new ArrayList<>();
     public KycService(){}
     public void addKycDetails(KycDetails details){
-        map.put(i,details);
-        i++;
-
+        list.add(details);
     }
-    public HashMap<Integer,KycDetails> getKycDetils(){
-        return map;
+    public List< KycDetails> getKycDetils(){
+        return list;
     }
 
 }
